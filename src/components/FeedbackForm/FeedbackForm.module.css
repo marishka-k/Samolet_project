@@ -1,0 +1,183 @@
+.section {
+  scroll-margin-top: 60px;
+}
+
+.head {
+  text-align: center;
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 500;
+}
+
+.lead {
+  max-width: 489px;
+  margin: 20px auto 0;
+  font-size: var(--fs-card);
+  font-weight: 500;
+}
+
+/* Мобильная версия: фото, затем форма */
+.layout {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.photo {
+  aspect-ratio: 280 / 240;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--input-h);
+  padding: 0 16px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--fs-card);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.input::placeholder {
+  color: #5f86b3;
+}
+.input:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+.input:focus {
+  border-color: var(--color-text);
+  background: var(--color-white);
+  outline: none;
+}
+.input:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.textarea {
+  min-height: var(--textarea-h);
+  padding-top: 8px;
+  resize: vertical;
+}
+
+/* Чекбокс: скрытый нативный input + нарисованный квадрат */
+.consent {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.checkInput {
+  position: absolute;
+  width: var(--check-size);
+  height: var(--check-size);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkBox {
+  position: relative;
+  flex: none;
+  width: var(--check-size);
+  height: var(--check-size);
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  background: transparent;
+  transition: background-color 0.2s;
+}
+.consent:hover .checkBox {
+  background: rgba(255, 255, 255, 0.6);
+}
+.checkInput:checked + .checkBox {
+  background: var(--color-accent);
+}
+.checkInput:checked + .checkBox::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: 36%;
+  width: 22%;
+  height: 48%;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checkInput:focus-visible + .checkBox {
+  outline: 3px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+.consentText {
+  font-size: calc(var(--fs-card) * 0.85);
+  text-align: left;
+}
+.consentText a {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.submit {
+  align-self: center;
+  margin-top: 20px;
+  min-width: 202px;
+}
+
+.status {
+  min-height: 1.3em;
+  margin-top: 12px;
+  color: var(--color-accent);
+  font-size: calc(var(--fs-card) * 0.85);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section {
+    scroll-margin-top: 100px;
+  }
+
+  .lead {
+    margin-top: clamp(16px, 1.7vw, 24px);
+  }
+
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 2.8vw, 40px);
+    align-items: center;
+    margin-top: clamp(28px, 2.8vw, 40px);
+  }
+
+  .photo {
+    aspect-ratio: 620 / 544;
+  }
+
+  .fields {
+    gap: clamp(12px, 1.4vw, 20px);
+  }
+
+  .consent {
+    margin-top: clamp(16px, 1.7vw, 24px);
+  }
+
+  .submit {
+    min-width: clamp(240px, 25vw, 361px);
+    margin-top: clamp(24px, 2.8vw, 40px);
+  }
+}

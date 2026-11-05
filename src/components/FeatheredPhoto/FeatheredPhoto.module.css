@@ -1,0 +1,19 @@
+.frame {
+  --feather-x: 8%;
+  --feather-y: 10%;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #8ec5ff 0%, #dcefff 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--feather-x), #000 calc(100% - var(--feather-x)), transparent),
+    linear-gradient(to bottom, transparent, #000 var(--feather-y), #000 calc(100% - var(--feather-y)), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 var(--feather-x), #000 calc(100% - var(--feather-x)), transparent),
+    linear-gradient(to bottom, transparent, #000 var(--feather-y), #000 calc(100% - var(--feather-y)), transparent);
+  mask-composite: intersect;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

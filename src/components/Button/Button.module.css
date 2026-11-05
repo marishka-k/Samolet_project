@@ -1,0 +1,69 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-control);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.m {
+  min-height: var(--btn-h);
+  padding: 0 1em;
+  font-size: var(--fs-card);
+}
+
+.l {
+  min-width: var(--btn-w-l);
+  min-height: var(--btn-h-l);
+  padding: 0 1.2em;
+  font-size: var(--fs-button);
+}
+
+.solid {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+.solid:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.outline {
+  background: var(--color-white);
+  color: var(--color-accent);
+}
+.outline:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.light {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--color-accent);
+}
+.light:hover {
+  background: var(--color-white);
+}
+
+.button:disabled {
+  border-color: var(--color-disabled);
+  color: var(--color-disabled);
+  cursor: not-allowed;
+}
+
+.icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
