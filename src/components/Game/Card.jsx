@@ -40,7 +40,7 @@ const Card = forwardRef(function Card({ category, question, index, total, isLast
             <img
               key={category.id}
               className={styles.cover}
-              src={`/images/cover-${category.id}.jpg`}
+              src={`${import.meta.env.BASE_URL}images/cover-${category.id}.jpg`}
               alt=""
               onError={(event) => {
                 event.currentTarget.style.visibility = 'hidden';

@@ -6,7 +6,7 @@ import styles from './Hero.module.css';
 export default function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
-      <FeatheredPhoto className={styles.photo} src="/images/hero.jpg" alt="" />
+      <FeatheredPhoto className={styles.photo} src={`${import.meta.env.BASE_URL}images/hero.jpg`} alt="" />
 
       <div className={styles.inner}>
         <h1 id="hero-title" className={styles.title}>
