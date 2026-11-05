@@ -36,7 +36,7 @@
   font-size: calc(var(--fs-card) * 0.8);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .actions {
     flex-direction: row;
     flex-wrap: wrap;

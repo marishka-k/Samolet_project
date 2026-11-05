@@ -30,13 +30,13 @@
   color: var(--color-white);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .tab {
     padding: 0;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .tabs {
     display: flex;
     flex-wrap: wrap;

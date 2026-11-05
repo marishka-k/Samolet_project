@@ -18,7 +18,7 @@
   margin-right: 40px;
 }
 
-/* Меню в строку не помещается на узком лаптопе — до 1024 px остаётся бургер */
+
 
 .burger {
   display: inline-flex;
@@ -69,13 +69,6 @@
 }
 .link:hover {
   color: var(--color-accent);
-}
-
-@media (min-width: 768px) {
-  .burger {
-    width: 28px;
-    height: 28px;
-  }
 }
 
 @media (min-width: 1024px) {
