@@ -16,9 +16,9 @@ const Card = forwardRef(function Card({ category, question, index, total, isLast
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.stack}>
-        {Array.from({ length: layers }, (_, i) => (
-          <span key={i} className={styles.layer} style={{ '--i': i + 1 }} aria-hidden="true" />
+      <div className={styles.stack}>        
+        {Array.from({ length: layers }, (_, i) => layers - i).map((depth) => (
+          <span key={depth} className={styles.layer} style={{ '--i': depth }} aria-hidden="true" />
         ))}
 
         <div className={cx(styles.card, isOpen && styles.flipped)}>
