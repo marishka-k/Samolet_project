@@ -7,13 +7,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: var(--page-max);
-  min-height: 50px;
+  min-height: var(--header-h);
   margin: 0 auto;
   padding: 0 var(--page-pad);
-}
-
-@media (min-width: 768px) {
-  .inner {
-    min-height: clamp(70px, 6.94vw, 100px);
-  }
 }

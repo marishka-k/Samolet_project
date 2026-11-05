@@ -20,54 +20,160 @@
   --color-accent: #007bfc;
   --color-white: #ffffff;
   --color-text: #111d3b;
+  --color-muted: #7381a6; /* рамки и плейсхолдеры полей формы */
   --color-disabled: #bdc6d7;
 
   --font-family: 'CoFo Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 
-  /* Типографика, мобильная версия (320 px) */
+  /*
+   * Три версии: мобильная (до 767 px, макет 320), лаптоп (768–1279 px,
+   * промежуточные значения) и десктоп (от 1280 px, макет 1440).
+   * Ниже — мобильная, остальные переопределяются медиазапросами.
+   */
+
+  /* Типографика */
   --fs-h1: 25px;
   --fs-h2: 20px;
   --fs-h3: 18px;
-  --fs-card: 14px; /* название карточек, ссылки, подписи */
+  --fs-card: 14px; /* вкладки, кнопки в игре, поля формы, подписи */
   --fs-body: 14px;
-  --fs-button: 18px;
+  --fs-button: 18px; /* крупные кнопки */
+  --fs-hint: 18px; /* подсказка над колодой */
+  --fs-question: 20px; /* вопрос на карточке */
+  --fs-logo: 15px;
 
-  /* Размеры элементов */
-  --btn-h: 32px;
-  --btn-h-l: 36px;
+  /* Кнопки и поля */
+  --btn-h: 32px; /* кнопки в игре */
+  --btn-h-l: 36px; /* крупные кнопки */
   --btn-w-l: 125px;
+  --btn-pad-l: 24px;
+  --border-l: 1px; /* рамка крупных кнопок */
+  --radius-l: 6px; /* крупные кнопки и поля формы */
+  --radius-control: 8px; /* кнопки в игре */
+  --radius-tab: 5px;
+  --tab-h: 30px;
+  --tab-pad: 20px;
   --input-h: 30px;
+  --input-pad: 10px;
   --textarea-h: 80px;
   --check-size: 18px;
+  --form-gap: 10px;
+  --submit-w: 202px;
+  --icon-size: 18px; /* иконки соцсетей */
+  --icon-gap: 10px;
+
+  /* Колода */
+  --card-size: 250px;
+  --card-step: 5px; /* сдвиг листов в стопке */
+  --card-border: 1px;
+  --card-pad: 14%; /* поля вокруг текста вопроса */
+  --radius-card: 25px;
 
   /* Отступы */
   --page-max: 1440px;
   --page-pad: 20px;
+  --header-h: 50px;
   --section-gap: 40px;
-  --radius-card: 16px;
-  --radius-control: 8px;
+  --block-gap: 20px; /* внутри блоков: заголовок → текст → фото */
+  --text-gap: 14px; /* между абзацами */
+  --game-gap: 20px; /* между частями игры */
+  --hero-pad: 60px;
+  --hero-sub-gap: 20px;
+  --hero-btn-gap: 60px;
+  --hero-h: 600px;
 }
 
-/* Десктоп (макет 1440 px) — значения плавно растут от 768 до 1440 */
+/* Лаптоп */
 @media (min-width: 768px) {
   :root {
-    --fs-h1: clamp(40px, 5.56vw, 80px);
-    --fs-h2: clamp(28px, 2.78vw, 40px);
-    --fs-h3: clamp(22px, 2.22vw, 32px);
-    --fs-card: clamp(16px, 1.67vw, 24px);
-    --fs-body: clamp(16px, 1.67vw, 24px);
-    --fs-button: clamp(20px, 2.22vw, 32px);
+    --fs-h1: 56px;
+    --fs-h2: 32px;
+    --fs-h3: 26px;
+    --fs-card: 20px;
+    --fs-body: 20px;
+    --fs-button: 26px;
+    --fs-hint: 26px;
+    --fs-question: 26px;
+    --fs-logo: 30px;
 
-    --btn-h: clamp(40px, 3.89vw, 56px);
-    --btn-h-l: clamp(48px, 4.58vw, 66px);
-    --btn-w-l: clamp(170px, 15.6vw, 225px);
-    --input-h: clamp(40px, 3.33vw, 48px);
-    --textarea-h: clamp(80px, 7.5vw, 108px);
+    --btn-h: 48px;
+    --btn-h-l: 56px;
+    --btn-w-l: 180px;
+    --btn-pad-l: 36px;
+    --border-l: 2px;
+    --radius-l: 10px;
+    --radius-tab: 8px;
+    --tab-h: 40px;
+    --tab-pad: 24px;
+    --input-h: 40px;
+    --input-pad: 24px;
+    --textarea-h: 96px;
+    --check-size: 22px;
+    --form-gap: 16px;
+    --submit-w: 290px;
+    --icon-size: 32px;
+    --icon-gap: 14px;
+
+    --card-size: 400px;
+    --card-step: 8px;
+    --card-border: 2px;
+    --card-pad: 20%;
+
+    --page-pad: 40px;
+    --header-h: 80px;
+    --section-gap: 64px;
+    --block-gap: 32px;
+    --text-gap: 16px;
+    --game-gap: 32px;
+    --hero-pad: 90px;
+    --hero-sub-gap: 40px;
+    --hero-btn-gap: 90px;
+    --hero-h: 800px;
+  }
+}
+
+/* Десктоп — значения из макета 1440 */
+@media (min-width: 1280px) {
+  :root {
+    --fs-h1: 80px;
+    --fs-h2: 40px;
+    --fs-h3: 32px;
+    --fs-card: 24px;
+    --fs-body: 24px;
+    --fs-button: 32px;
+    --fs-hint: 32px;
+    --fs-question: 32px;
+    --fs-logo: 40px;
+
+    --btn-h: 56px;
+    --btn-h-l: 66px;
+    --btn-w-l: 225px;
+    --btn-pad-l: 44px;
+    --radius-l: 11px;
+    --tab-h: 48px;
+    --tab-pad: 32px;
+    --input-h: 48px;
+    --input-pad: 32px;
+    --textarea-h: 108px;
     --check-size: 24px;
+    --form-gap: 20px;
+    --submit-w: 361px;
+    --icon-size: 40px;
+    --icon-gap: 18px;
 
-    --page-pad: clamp(24px, 5.56vw, 80px);
-    --section-gap: clamp(56px, 5.56vw, 80px);
-    --radius-card: 24px;
+    --card-size: 510px;
+    --card-step: 10px;
+
+    --page-pad: 80px;
+    --header-h: 100px;
+    --section-gap: 80px;
+    --block-gap: 40px;
+    --text-gap: 20px;
+    --game-gap: 40px;
+    --hero-pad: 120px;
+    --hero-sub-gap: 60px;
+    --hero-btn-gap: 120px;
+    --hero-h: 1000px;
   }
 }
 
