@@ -2,15 +2,21 @@
   position: relative;
   isolation: isolate;
   min-height: var(--hero-h);
-  margin-bottom: var(--section-gap); /* отступ до «О Самолете», как между остальными блоками */
+  margin-bottom: var(--hero-gap); /* отступ от низа фото до «О Самолете» */
   padding-top: var(--hero-pad);
   overflow: hidden;
   text-align: center;
 }
 
+/*
+ * Фото проявляется из фона под заголовком (длинная растушёвка сверху)
+ * и коротко гаснет внизу, как в макете. По бокам — без растушёвки,
+ * она появляется только на экранах шире макета, где фото стоит по центру.
+ */
 .photo {
-  --feather-x: 4%;
-  --feather-y: 30%;
+  --feather-x: 0%;
+  --feather-top: var(--hero-fade-top);
+  --feather-bottom: var(--hero-fade-bottom);
   position: absolute;
   right: 0;
   bottom: 0;
@@ -18,7 +24,7 @@
   z-index: -1;
   /* шире макета фото не растягивается: стоит по центру, края растушёваны в фон */
   max-width: var(--page-max);
-  height: 65%;
+  height: var(--hero-photo-h);
   margin: 0 auto;
 }
 
@@ -45,4 +51,10 @@
 
 .button {
   margin-top: var(--hero-btn-gap);
+}
+
+@media (min-width: 1500px) {
+  .photo {
+    --feather-x: 6%;
+  }
 }

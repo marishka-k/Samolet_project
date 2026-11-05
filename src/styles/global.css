@@ -81,7 +81,12 @@
   --hero-pad: 60px;
   --hero-sub-gap: 20px;
   --hero-btn-gap: 60px;
-  --hero-h: 600px;
+  /* первый экран по макету: высота до низа фото, фото и его растушёвка, отступ до «О Самолете» */
+  --hero-h: 575px;
+  --hero-photo-h: 365px; /* верх фото на прежнем месте, низ — по макету */
+  --hero-fade-top: 117px;
+  --hero-fade-bottom: 129px;
+  --hero-gap: 32px;
 }
 
 /* Лаптоп */
@@ -130,7 +135,11 @@
     --hero-pad: 90px;
     --hero-sub-gap: 40px;
     --hero-btn-gap: 90px;
-    --hero-h: 800px;
+    --hero-h: 760px;
+    --hero-photo-h: 480px;
+    --hero-fade-top: 156px;
+    --hero-fade-bottom: 114px;
+    --hero-gap: 64px;
   }
 }
 
@@ -175,7 +184,11 @@
     --hero-pad: 120px;
     --hero-sub-gap: 60px;
     --hero-btn-gap: 120px;
-    --hero-h: 1000px;
+    --hero-h: 910px;
+    --hero-photo-h: 560px;
+    --hero-fade-top: 195px;
+    --hero-fade-bottom: 112px;
+    --hero-gap: 100px;
   }
 }
 
