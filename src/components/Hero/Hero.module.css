@@ -1,8 +1,8 @@
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 600px;
-  padding-top: 60px;
+  min-height: var(--hero-h);
+  padding-top: var(--hero-pad);
   overflow: hidden;
   text-align: center;
 }
@@ -34,26 +34,11 @@
 }
 
 .subtitle {
-  margin-top: 20px;
+  margin-top: var(--hero-sub-gap);
   font-size: var(--fs-h2);
   font-weight: 500;
 }
 
 .button {
-  margin-top: 60px;
-}
-
-@media (min-width: 768px) {
-  .hero {
-    min-height: clamp(560px, 69.4vw, 1000px);
-    padding-top: clamp(60px, 8.33vw, 120px);
-  }
-
-  .subtitle {
-    margin-top: clamp(28px, 4.2vw, 60px);
-  }
-
-  .button {
-    margin-top: clamp(60px, 8.3vw, 120px);
-  }
+  margin-top: var(--hero-btn-gap);
 }

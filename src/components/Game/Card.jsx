@@ -16,7 +16,8 @@ const Card = forwardRef(function Card({ category, question, index, total, isLast
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.stack}>        
+      <div className={styles.stack}>
+        {/* Дальний лист рисуем первым, чтобы ближний лёг поверх него */}
         {Array.from({ length: layers }, (_, i) => layers - i).map((depth) => (
           <span key={depth} className={styles.layer} style={{ '--i': depth }} aria-hidden="true" />
         ))}
@@ -49,10 +50,11 @@ const Card = forwardRef(function Card({ category, question, index, total, isLast
 
           {/* Обратная сторона: вопрос */}
           <div className={styles.back} aria-hidden={!isOpen} aria-live="polite">
-            <span className={cx(styles.corner, styles.tl)} />
-            <span className={cx(styles.corner, styles.tr)} />
-            <span className={cx(styles.corner, styles.bl)} />
-            <span className={cx(styles.corner, styles.br)} />
+            {['tl', 'tr', 'bl', 'br'].map((position) => (
+              <span key={position} className={cx(styles.corner, styles[position])} aria-hidden="true">
+                <span className={styles.inner} />
+              </span>
+            ))}
 
             {isOpen && (
               <>

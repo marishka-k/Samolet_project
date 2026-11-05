@@ -2,31 +2,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  scroll-margin-top: 60px;
+  scroll-margin-top: var(--header-h);
   text-align: center;
 }
 
 .title {
-  margin-bottom: 30px;
+  margin-bottom: var(--game-gap);
   font-size: var(--fs-h2);
   font-weight: 500;
 }
 
 .hint {
   min-height: 1.3em;
-  margin: 24px 0 20px;
-  font-size: var(--fs-card);
+  margin: var(--game-gap) 0;
+  font-size: var(--fs-hint);
   font-weight: 500;
 }
 
+/* На мобильном кнопки друг под другом, с лаптопа — в ряд */
 .actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
   min-height: var(--btn-h);
-  margin-top: 28px;
+  margin-top: var(--game-gap);
 }
 
 .notice {
@@ -37,20 +37,10 @@
 }
 
 @media (min-width: 768px) {
-  .game {
-    scroll-margin-top: 100px;
-  }
-
-  .title {
-    margin-bottom: 40px;
-  }
-
-  .hint {
-    margin: clamp(20px, 2.2vw, 32px) 0 clamp(20px, 2.2vw, 32px);
-  }
-
   .actions {
-    gap: clamp(12px, 1.4vw, 20px);
-    margin-top: clamp(28px, 3vw, 44px);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--game-gap);
   }
 }

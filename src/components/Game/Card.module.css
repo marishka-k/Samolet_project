@@ -1,14 +1,16 @@
+/* Размеры колоды (--card-size, --card-step, --card-border) — в styles/global.css */
 .wrapper {
-  --card-size: 220px;
-  width: var(--card-size);
+  /* место под листы, выглядывающие слева и снизу */
+  width: calc(var(--card-size) + 2 * var(--card-step));
   margin: 0 auto;
+  padding: 0 0 calc(2 * var(--card-step)) calc(2 * var(--card-step));
   perspective: 1200px;
 }
 
 .stack {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: var(--card-size);
+  height: var(--card-size);
 }
 
 /* «Листы» оставшихся карточек под верхней */
@@ -16,12 +18,10 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  border: var(--card-border) solid var(--color-main);
   border-radius: var(--radius-card);
   background: var(--color-accent);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-  transform: translate(calc(var(--i) * -6px), calc(var(--i) * 6px));
-  border: 2px solid var(--color-main);
-  border-radius: 5%;
+  transform: translate(calc(var(--i) * -1 * var(--card-step)), calc(var(--i) * var(--card-step)));
 }
 
 .card {
@@ -51,12 +51,10 @@
   place-items: center;
   padding: 0;
   overflow: hidden;
-  border: 0;
+  border: var(--card-border) solid var(--color-main);
   background: var(--color-accent);
   cursor: pointer;
   transition: filter 0.2s;
-  border: 2px solid var(--color-main);
-  border-radius: 5%;
 }
 .front:hover:not(:disabled) {
   filter: brightness(1.08);
@@ -81,17 +79,15 @@
 .back {
   display: grid;
   place-items: center;
-  padding: 20%;
-  border: 1px solid var(--color-accent);
+  padding: var(--card-pad);
+  border: var(--card-border) solid var(--color-accent);
   background: var(--color-main);
   text-align: center;
   transform: rotateY(180deg);
-  border: 2px solid var(--color-accent);
-  border-radius: 5%;
 }
 
 .question {
-  font-size: var(--fs-card);
+  font-size: var(--fs-question);
   font-weight: 500;
   line-height: 1.25;
   animation: question-in 0.35s ease both;
@@ -111,56 +107,79 @@
 .last {
   position: absolute;
   right: 0;
-  bottom: 9%;
+  bottom: 3%;
   left: 0;
   color: var(--color-accent);
-  font-size: calc(var(--fs-card) * 0.75);
+  font-size: calc(var(--fs-question) * 0.6);
 }
 
-/* Уголки с точками, как на макете */
+/*
+ * Уголки, как на макете: внешняя линия с крупной точкой на конце
+ * и внутренняя тонкая с маленькой точкой. Размеры — доли карточки
+ * (в макете 510 px: отступ 50, уголок 100, внутренний 74 со сдвигом 8).
+ */
 .corner {
+  --outer: calc(var(--card-size) * 0.196);
+  --inner: calc(var(--card-size) * 0.145);
+  --shift: calc(var(--card-size) * 0.016);
+  --line: max(1px, calc(var(--card-size) * 0.004));
+  --dot: calc(var(--card-size) * 0.02);
+  --dot-small: max(3px, calc(var(--card-size) * 0.01));
   position: absolute;
-  width: 18%;
-  height: 18%;
-  border-top: 1.5px solid var(--color-text);
-  border-left: 1.5px solid var(--color-text);
+  width: var(--outer);
+  height: var(--outer);
+  border-top: var(--line) solid var(--color-text);
+  border-left: var(--line) solid var(--color-text);
 }
+/* крупная точка на конце верхней линии */
 .corner::after {
   content: '';
   position: absolute;
-  top: -3.5px;
-  right: -3px;
-  width: 5px;
-  height: 5px;
+  top: calc((var(--dot) + var(--line)) / -2);
+  right: calc(var(--dot) / -2);
+  width: var(--dot);
+  height: var(--dot);
   border-radius: 50%;
   background: var(--color-text);
 }
+
+.inner {
+  position: absolute;
+  top: calc(var(--shift) - var(--line));
+  left: calc(var(--shift) - var(--line));
+  width: var(--inner);
+  height: var(--inner);
+  border-top: 1px solid var(--color-text);
+  border-left: 1px solid var(--color-text);
+}
+/* маленькая точка на конце внутренней вертикальной линии */
+.inner::after {
+  content: '';
+  position: absolute;
+  bottom: calc(var(--dot-small) / -2);
+  left: calc((var(--dot-small) + 1px) / -2);
+  width: var(--dot-small);
+  height: var(--dot-small);
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
 .tl {
-  top: 7%;
-  left: 7%;
+  top: 9.8%;
+  left: 9.8%;
 }
 .tr {
-  top: 7%;
-  right: 7%;
+  top: 9.8%;
+  right: 9.8%;
   transform: scaleX(-1);
 }
 .bl {
-  bottom: 7%;
-  left: 7%;
+  bottom: 9.8%;
+  left: 9.8%;
   transform: scaleY(-1);
 }
 .br {
-  right: 7%;
-  bottom: 7%;
+  right: 9.8%;
+  bottom: 9.8%;
   transform: scale(-1, -1);
-}
-
-@media (min-width: 768px) {
-  .wrapper {
-    --card-size: clamp(280px, 35.4vw, 510px); /* в макете карточка 510 px при ширине 1440 */
-  }
-
-  .layer {
-    transform: translate(calc(var(--i) * -10px), calc(var(--i) * 10px)); /* шаг листов в макете — 10 px */
-  }
 }

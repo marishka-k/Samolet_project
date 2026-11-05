@@ -1,21 +1,22 @@
+/* На мобильном вкладки сеткой 2×2, с лаптопа — в один ряд */
 .tabs {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .tab {
-  min-width: 120px;
-  min-height: 30px;
-  padding: 0 14px;
+  min-height: var(--tab-h);
+  padding: 0 var(--tab-pad);
   border: 1px solid var(--color-accent);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.4);
-  color: var(--color-accent);
+  border-radius: var(--radius-tab);
+  background: var(--color-main);
+  color: var(--color-text);
   font-size: var(--fs-card);
   font-weight: 500;
   line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 }
@@ -29,14 +30,16 @@
   color: var(--color-white);
 }
 
+@media (max-width: 767px) {
+  .tab {
+    padding: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .tabs {
-    gap: clamp(12px, 1.4vw, 20px);
-  }
-
-  .tab {
-    min-width: clamp(120px, 11.6vw, 167px);
-    min-height: clamp(36px, 3.33vw, 48px);
-    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--game-gap) / 2);
   }
 }
