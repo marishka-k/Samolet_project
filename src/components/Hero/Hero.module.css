@@ -2,6 +2,7 @@
   position: relative;
   isolation: isolate;
   min-height: var(--hero-h);
+  margin-bottom: var(--section-gap); /* отступ до «О Самолете», как между остальными блоками */
   padding-top: var(--hero-pad);
   overflow: hidden;
   text-align: center;
